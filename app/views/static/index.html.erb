@@ -1,0 +1,11 @@
+<h1>Strona główna</h1>
+<% if logged_in? %>
+  <h2>Booked parking slots</h2>
+  <ul>
+  <% current_user.parking_slots.each do |p_slot| %>
+    <li><%= link_to p_slot.position, p_slot %></li>
+  <% end %>
+  </ul>
+<% else %>
+  Nie jesteś zalogowany.
+<% end %>

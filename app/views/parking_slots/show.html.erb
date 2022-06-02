@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<% if logged_in? %>
+  <% unless current_user.books?(@parking_slot) %>
+    <%= link_to( "Book", action: :book) %>
+  <% else %>
+    <%= link_to( "Book off", action: :book_off) %>
+  <% end %>
+<% end %>
+
 <p>
   <strong>Position:</strong>
   <%= @parking_slot.position %>

@@ -1,5 +1,5 @@
 class ParkingSlotsController < ApplicationController
-  before_action :set_parking_slot, only: %i[ show edit update destroy ]
+  before_action :set_parking_slot, only: [:show, :edit, :update, :destroy, :book, :book_off]
 
   # GET /parking_slots or /parking_slots.json
   def index
@@ -17,6 +17,20 @@ class ParkingSlotsController < ApplicationController
 
   # GET /parking_slots/1/edit
   def edit
+  end
+
+  def book
+    unless current_user.books?(@parking_slot)
+      current_user.parking_slots.append(@parking_slot)
+    end
+    redirect_to @parking_slot
+  end
+
+  def book_off
+    if current_user.books?(@parking_slot)
+      current_user.parking_slots.delete(@parking_slot)
+    end
+    redirect_to @parking_slot
   end
 
   # POST /parking_slots or /parking_slots.json
