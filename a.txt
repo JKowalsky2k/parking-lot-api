@@ -1,0 +1,491 @@
+=> Booting Puma
+=> Rails 5.2.8 application starting in development 
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.12.6 (ruby 2.7.0-p0), codename: Llamas in Pajamas
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Use Ctrl-C to stop
+Started GET "/parking_slots/5" for 127.0.0.1 at 2022-06-02 15:54:23 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.7.0/gems/activerecord-5.2.8/lib/active_record/log_subscriber.rb:98
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 233ms (Views: 193.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/parking_slots/5/book" for 127.0.0.1 at 2022-06-02 15:54:25 +0200
+Processing by ParkingSlotsController#book as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/parking_slots_controller.rb:24
+{:sss=>"aaa"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy []>}
+{:sss=>5}
+{:sss=>"ccc"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy [#<ParkingSlot id: 5, position: 1, created_at: "2022-06-02 11:55:47", updated_at: "2022-06-02 11:55:47">]>}
+{:sss=>5}
+Redirected to http://localhost:3000/parking_slots/5
+Completed 302 Found in 12ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/parking_slots/5" for 127.0.0.1 at 2022-06-02 15:54:25 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 27ms (Views: 24.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:54:27 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/parking_slots" for 127.0.0.1 at 2022-06-02 15:54:33 +0200
+Processing by ParkingSlotsController#index as HTML
+  Rendering parking_slots/index.html.erb within layouts/application
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots"[0m
+  ↳ app/views/parking_slots/index.html.erb:14
+  Rendered parking_slots/index.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 29ms (Views: 27.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:54:34 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/parking_slots" for 127.0.0.1 at 2022-06-02 15:54:36 +0200
+Processing by ParkingSlotsController#index as HTML
+  Rendering parking_slots/index.html.erb within layouts/application
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots"[0m
+  ↳ app/views/parking_slots/index.html.erb:14
+  Rendered parking_slots/index.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:54:37 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/parking_slots/6/book" for 127.0.0.1 at 2022-06-02 15:54:38 +0200
+Processing by ParkingSlotsController#book as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/parking_slots_controller.rb:24
+{:sss=>"aaa"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy []>}
+{:sss=>6}
+{:sss=>"ccc"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy [#<ParkingSlot id: 5, position: 1, created_at: "2022-06-02 11:55:47", updated_at: "2022-06-02 11:55:47">]>}
+{:sss=>6}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parking_slots_controller.rb:37
+  [1m[36mUser::HABTM_ParkingSlots Create (0.4ms)[0m  [1m[32mINSERT INTO "users_slots" ("user_id", "parking_slot_id") VALUES (?, ?)[0m  [["user_id", 3], ["parking_slot_id", 6]]
+  ↳ app/controllers/parking_slots_controller.rb:37
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parking_slots_controller.rb:37
+Redirected to http://localhost:3000/parking_slots/6
+Completed 302 Found in 27ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:54:38 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 3], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:54:40 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2022-06-02 15:54:41 +0200
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YgWvrg2TBpYBSQ+Tl5eznwPJLl0d3j6a2etZa5zlwl/6gNRIdb5OBJS2es8vFj2zLSk2idNAqzd3cT9mjXxmfw=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:54:41 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  Rendered static/index.html.erb within layouts/application (1.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 55ms (Views: 54.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2022-06-02 15:54:43 +0200
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.4ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-06-02 15:54:49 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j4sEuedbY6xDGmSFMFBzsI++kp5zV4aovF0f8whY2Q5BZZSAK7+U6v875cbigtTaCCpY6qelwymiqHDcYdI6bQ==", "session"=>{"email"=>"c@d", "password"=>"[FILTERED]"}, "commit"=>"Zaloguj"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "c@d"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:6
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 251ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2022-06-02 15:54:50 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:63
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 29ms (Views: 25.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:54:51 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/parking_slots" for 127.0.0.1 at 2022-06-02 15:54:53 +0200
+Processing by ParkingSlotsController#index as HTML
+  Rendering parking_slots/index.html.erb within layouts/application
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots"[0m
+  ↳ app/views/parking_slots/index.html.erb:14
+  Rendered parking_slots/index.html.erb within layouts/application (2.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 40ms (Views: 38.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:54:54 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 4], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 63ms (Views: 60.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/parking_slots/6/book" for 127.0.0.1 at 2022-06-02 15:54:56 +0200
+Processing by ParkingSlotsController#book as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/parking_slots_controller.rb:24
+{:sss=>"aaa"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy [#<ParkingSlot id: 6, position: 2, created_at: "2022-06-02 12:01:56", updated_at: "2022-06-02 12:01:56">]>}
+{:sss=>6}
+{:sss=>"ccc"}
+  [1m[36mParkingSlot Load (0.3ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy [#<ParkingSlot id: 5, position: 1, created_at: "2022-06-02 11:55:47", updated_at: "2022-06-02 11:55:47">]>}
+{:sss=>6}
+Redirected to http://localhost:3000/parking_slots/6
+Completed 302 Found in 14ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:54:56 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 4], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/parking_slots/6/book" for 127.0.0.1 at 2022-06-02 15:54:57 +0200
+Processing by ParkingSlotsController#book as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/parking_slots_controller.rb:24
+{:sss=>"aaa"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy [#<ParkingSlot id: 6, position: 2, created_at: "2022-06-02 12:01:56", updated_at: "2022-06-02 12:01:56">]>}
+{:sss=>6}
+{:sss=>"ccc"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/parking_slots_controller.rb:26
+{:sss=>nil}
+{:sss=>#<ActiveRecord::Associations::CollectionProxy [#<ParkingSlot id: 5, position: 1, created_at: "2022-06-02 11:55:47", updated_at: "2022-06-02 11:55:47">]>}
+{:sss=>6}
+Redirected to http://localhost:3000/parking_slots/6
+Completed 302 Found in 12ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:54:57 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:91
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 4], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 42ms (Views: 38.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:56:10 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.3ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (55.1ms)
+Completed 200 OK in 81ms (Views: 77.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/parking_slots" for 127.0.0.1 at 2022-06-02 15:56:33 +0200
+Processing by ParkingSlotsController#index as HTML
+  Rendering parking_slots/index.html.erb within layouts/application
+  [1m[36mParkingSlot Load (0.3ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots"[0m
+  ↳ app/views/parking_slots/index.html.erb:14
+  Rendered parking_slots/index.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 46ms (Views: 44.5ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/parking_slots/5" for 127.0.0.1 at 2022-06-02 15:56:37 +0200
+Processing by ParkingSlotsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0Qan5deoEmb9kmskHFM8FmWyYsh+STxaM6i3BEQAMAJJg9wDr4Va9GhtHnik0rI6S1J6HLDXqfedMtEJVZmUIg==", "id"=>"5"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:87
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/parking_slots_controller.rb:76
+  [1m[36mParkingSlot::HABTM_Users Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users_slots" WHERE "users_slots"."parking_slot_id" = ?[0m  [["parking_slot_id", 5]]
+  ↳ app/controllers/parking_slots_controller.rb:76
+  [1m[36mParkingSlot Destroy (0.2ms)[0m  [1m[31mDELETE FROM "parking_slots" WHERE "parking_slots"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/parking_slots_controller.rb:76
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/parking_slots_controller.rb:76
+Redirected to http://localhost:3000/parking_slots
+Completed 302 Found in 16ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/parking_slots" for 127.0.0.1 at 2022-06-02 15:56:37 +0200
+Processing by ParkingSlotsController#index as HTML
+  Rendering parking_slots/index.html.erb within layouts/application
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots"[0m
+  ↳ app/views/parking_slots/index.html.erb:14
+  Rendered parking_slots/index.html.erb within layouts/application (2.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:56:39 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 39ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/parking_slots" for 127.0.0.1 at 2022-06-02 15:56:47 +0200
+Processing by ParkingSlotsController#index as HTML
+  Rendering parking_slots/index.html.erb within layouts/application
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots"[0m
+  ↳ app/views/parking_slots/index.html.erb:14
+  Rendered parking_slots/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:56:48 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:87
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 4], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/parking_slots/6/book" for 127.0.0.1 at 2022-06-02 15:56:49 +0200
+Processing by ParkingSlotsController#book as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:87
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/parking_slots_controller.rb:24
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/parking_slots_controller.rb:25
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/parking_slots_controller.rb:25
+Redirected to http://localhost:3000/parking_slots/6
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:56:49 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.2ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:87
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 4], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 34ms (Views: 31.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/parking_slots/6/book" for 127.0.0.1 at 2022-06-02 15:56:50 +0200
+Processing by ParkingSlotsController#book as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:87
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/parking_slots_controller.rb:24
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/controllers/parking_slots_controller.rb:25
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/parking_slots_controller.rb:25
+Redirected to http://localhost:3000/parking_slots/6
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/parking_slots/6" for 127.0.0.1 at 2022-06-02 15:56:50 +0200
+Processing by ParkingSlotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT  "parking_slots".* FROM "parking_slots" WHERE "parking_slots"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/parking_slots_controller.rb:87
+  Rendering parking_slots/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ? AND "parking_slots"."id" = ? LIMIT ?[0m  [["user_id", 4], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  Rendered parking_slots/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 15:56:51 +0200
+Processing by StaticController#index as HTML
+  Rendering static/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/sessions_helper.rb:7
+  [1m[36mParkingSlot Load (0.1ms)[0m  [1m[34mSELECT "parking_slots".* FROM "parking_slots" INNER JOIN "users_slots" ON "parking_slots"."id" = "users_slots"."parking_slot_id" WHERE "users_slots"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/views/static/index.html.erb:5
+  Rendered static/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.2ms)
+
+

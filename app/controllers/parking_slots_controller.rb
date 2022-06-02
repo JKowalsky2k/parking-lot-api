@@ -20,8 +20,18 @@ class ParkingSlotsController < ApplicationController
   end
 
   def book
-    unless current_user.books?(@parking_slot)
-      current_user.parking_slots.append(@parking_slot)
+    @can_be_book = true
+    User.all.each do |u|
+      u.parking_slots.each do |p_slot|
+        if p_slot.id == @parking_slot.id
+          @can_be_book = false
+        end
+      end
+    end
+    if @can_be_book
+      unless current_user.books?(@parking_slot)
+        current_user.parking_slots.append(@parking_slot)
+      end
     end
     redirect_to @parking_slot
   end
