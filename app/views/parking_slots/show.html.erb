@@ -6,6 +6,12 @@
   <% else %>
     <%= link_to( "Book off", action: :book_off) %>
   <% end %>
+
+  <% unless Parking.all[0].adds?(@parking_slot) %>
+    <%= link_to( "Add", action: :add) %>
+  <% else %>
+    <%= link_to( "Remove", action: :remove) %>
+  <% end %>
 <% end %>
 
 <p>

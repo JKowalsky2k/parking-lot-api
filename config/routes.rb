@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :parkings
   root to: 'static#index'
 
   get    '/login',   to: 'sessions#new'
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
 
   get '/parking_slots/:id/book', to: 'parking_slots#book'
   get '/parking_slots/:id/book_off', to: 'parking_slots#book_off'
+
+  get '/parking_slots/:id/add', to: 'parking_slots#add'
+  get '/parking_slots/:id/remove', to: 'parking_slots#remove'
 
   resources :parking_slots
   resources :users

@@ -12,12 +12,14 @@
 
   <tbody>
     <% @parking_slots.each do |parking_slot| %>
-      <tr>
-        <td><%= parking_slot.position %></td>
-        <td><%= link_to 'Show', parking_slot %></td>
-        <td><%= link_to 'Edit', edit_parking_slot_path(parking_slot) %></td>
-        <td><%= link_to 'Destroy', parking_slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if parking_slot_available?(parking_slot.id) %>
+        <tr>
+          <td><%= parking_slot.position %></td>
+          <td><%= link_to 'Show', parking_slot %></td>
+          <td><%= link_to 'Edit', edit_parking_slot_path(parking_slot) %></td>
+          <td><%= link_to 'Destroy', parking_slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

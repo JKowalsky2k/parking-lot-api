@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @parking.city %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @parking.street %>
+</p>
+
+<p>
+  <strong>Address number:</strong>
+  <%= @parking.address_number %>
+</p>
+
+<h1>Parkings slots</h1>
+<ul>
+  <% Parking.all[0].parking_slots.each do |p_slot| %>
+    <li><%= link_to p_slot.position, p_slot%></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_parking_path(@parking) %> |
+<%= link_to 'Back', parkings_path %>

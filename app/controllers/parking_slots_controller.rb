@@ -1,5 +1,5 @@
 class ParkingSlotsController < ApplicationController
-  before_action :set_parking_slot, only: [:show, :edit, :update, :destroy, :book, :book_off]
+  before_action :set_parking_slot, only: [:show, :edit, :update, :destroy, :book, :book_off, :add, :remove]
 
   # GET /parking_slots or /parking_slots.json
   def index
@@ -20,15 +20,7 @@ class ParkingSlotsController < ApplicationController
   end
 
   def book
-    @can_be_book = true
-    User.all.each do |u|
-      u.parking_slots.each do |p_slot|
-        if p_slot.id == @parking_slot.id
-          @can_be_book = false
-        end
-      end
-    end
-    if @can_be_book
+    if parking_slot_available?(@parking_slot.id)
       unless current_user.books?(@parking_slot)
         current_user.parking_slots.append(@parking_slot)
       end
@@ -40,6 +32,16 @@ class ParkingSlotsController < ApplicationController
     if current_user.books?(@parking_slot)
       current_user.parking_slots.delete(@parking_slot)
     end
+    redirect_to @parking_slot
+  end
+
+  def add
+    Parking.all[0].parking_slots.append(@parking_slot)
+    redirect_to @parking_slot
+  end
+
+  def remove
+    Parking.all[0].parking_slots.delete(@parking_slot)
     redirect_to @parking_slot
   end
 

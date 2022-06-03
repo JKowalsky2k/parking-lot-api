@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_111920) do
+ActiveRecord::Schema.define(version: 2022_06_03_123242) do
 
   create_table "parking_slots", force: :cascade do |t|
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "parkings", force: :cascade do |t|
+    t.string "city"
+    t.string "street"
+    t.string "address_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parkings_slots", id: false, force: :cascade do |t|
+    t.integer "parking_id"
+    t.integer "parking_slot_id"
+    t.index ["parking_id"], name: "index_parkings_slots_on_parking_id"
+    t.index ["parking_slot_id"], name: "index_parkings_slots_on_parking_slot_id"
   end
 
   create_table "users", force: :cascade do |t|
