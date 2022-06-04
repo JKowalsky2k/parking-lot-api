@@ -1,11 +1,18 @@
 <h1>Strona główna</h1>
 <% if logged_in? %>
   <h2>Booked parking slots</h2>
-  <ul>
-  <% current_user.parking_slots.each do |p_slot| %>
-    <li><%= link_to p_slot.position, p_slot %></li>
+  <% if current_user.parking_slots.any? %>
+    <h3>
+        <%= Parking.all[0].city %>,
+        <%= Parking.all[0].street %>
+        <%= Parking.all[0].address_number %>
+    </h3>
+    <ul>
+      <% current_user.parking_slots.each do |p_slot| %>
+        <li><%= link_to p_slot.position, p_slot %></li>
+      <% end %>
+    </ul>
   <% end %>
-  </ul>
 <% else %>
   Please log in
 <% end %>
