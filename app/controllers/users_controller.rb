@@ -1,12 +1,22 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
+  swagger_controller :users, 'Users'
 
   # GET /users or /users.json
+  swagger_api :index do
+    summary 'Returns all users'
+  end
   def index
     @users = User.all
   end
 
   # GET /users/1 or /users/1.json
+  swagger_api :show do
+    summary 'Returns one user'
+    param :path, :id, :integer, :required, "User id"
+  end
+
   def show
   end
 
@@ -18,8 +28,18 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
-
+  # GET /students/1
+  # GET /students/1.json
+  
   # POST /users or /users.json
+  swagger_api :create do
+    summary 'Creates new user'
+    param :form, "user[name]", :string, :required, "User name"
+    param :form, "user[surname]", :string, :required, "User surname"
+    param :form, "user[email]", :string, :required, "User email"
+    param :form, "user[phone_number]", :string, :required, "User phone_number"
+    param :form, "user[password]", :string, :required, "User password" 
+  end
   def create
     @user = User.new(user_params)
 
@@ -35,6 +55,15 @@ class UsersController < ApplicationController
   end
 
   # PATCH/PUT /users/1 or /users/1.json
+  swagger_api :update do
+    summary 'Updates user'
+    param :path, :id, :integer, :required, "User id"
+    param :form, "user[name]", :string, :required, "User name"
+    param :form, "user[surname]", :string, :required, "User surname"
+    param :form, "user[email]", :string, :required, "User email"
+    param :form, "user[phonenumber]", :string, :required, "User phonenumber"
+    param :form, "user[password]", :string, :required, "User password"
+  end
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -48,6 +77,10 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1 or /users/1.json
+  swagger_api :destroy do
+    summary 'Destroys user'
+    param :path, :id, :integer, :required, "User id"
+  end
   def destroy
     @user.destroy
 

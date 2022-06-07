@@ -1,0 +1,178 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "parking_slots",
+  "apis": [
+    {
+      "path": "/parking_slots/{id}/book",
+      "operations": [
+        {
+          "summary": "Allows booking a parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#book",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots/{id}/book_off",
+      "operations": [
+        {
+          "summary": "Allows to book off a parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#book_off",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots/{id}/add",
+      "operations": [
+        {
+          "summary": "Adds a new parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#add",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots/{id}/remove",
+      "operations": [
+        {
+          "summary": "Deletes a parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#remove",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots",
+      "operations": [
+        {
+          "summary": "Returns all parking slots",
+          "nickname": "ParkingSlots#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots",
+      "operations": [
+        {
+          "summary": "Creates a parking slot",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "parking_slot[position]",
+              "type": "integer",
+              "description": "Position",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots/{id}",
+      "operations": [
+        {
+          "summary": "Returns one parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Parking slot id",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots/{id}",
+      "operations": [
+        {
+          "summary": "Updates a parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "parking_slot[position]",
+              "type": "integer",
+              "description": "Position",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#update",
+          "method": "patch"
+        }
+      ]
+    },
+    {
+      "path": "/parking_slots/{id}",
+      "operations": [
+        {
+          "summary": "Deletes a parking slot",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "id",
+              "required": true
+            }
+          ],
+          "nickname": "ParkingSlots#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :parkings
   root to: 'static#index'
 
@@ -13,6 +14,10 @@ Rails.application.routes.draw do
   get '/parking_slots/:id/remove', to: 'parking_slots#remove'
 
   get    '/summary',   to: 'static#summary'
+
+  get '/api' => redirect('/swagger/dist/index.html?url=/api-docs.json')
+
+  #get '/swagger/dist/index.html', to: '/swagger/dist/index.html'
 
   resources :parking_slots
   resources :users

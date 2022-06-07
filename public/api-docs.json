@@ -1,0 +1,28 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "apis": [
+    {
+      "path": "/parkings.{format}",
+      "description": "Parkings"
+    },
+    {
+      "path": "/sessions.{format}",
+      "description": "Authentication"
+    },
+    {
+      "path": "/parking_slots.{format}",
+      "description": "ParkingSlots"
+    },
+    {
+      "path": "/users.{format}",
+      "description": "Users"
+    }
+  ],
+  "authorizations": null,
+  "info": {
+    "title": "ParkPlace",
+    "description": "Project rails app"
+  }
+}
