@@ -8,6 +8,10 @@
       "description": "Parkings"
     },
     {
+      "path": "/static.{format}",
+      "description": "Static"
+    },
+    {
       "path": "/sessions.{format}",
       "description": "Authentication"
     },
